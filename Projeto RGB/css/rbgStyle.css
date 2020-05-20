@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.colorrgb{
+    background-color: rgb(red, green, blue);
+}
+body{
+    width: 100%;
+}
+.center{
+    width: 1080px;
+    margin: 0 auto;
+}
+.cores{
+    width: 100%;
+    margin: 30px 0;
+    text-align: center;
+}
+.cores span{
+    display: block;
+    margin-bottom: 30px;
+    padding-right: 20px;
+    font-size: 30px;
+}
+.cores input[type="range"]{
+    width: 250px;
+    margin-right: 20px;
+}
+.cores input[type="text"]{
+    width: 70px;
+    text-align: center;
+    font-size: 20px;
+    padding: 4px 8px;
+}
+#quadrado{
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background-color: rgb(50, 255, 200);
+}
+

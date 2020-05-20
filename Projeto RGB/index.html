@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/rbgStyle.css">
+    <title>Projeto RGB</title>
+</head>
+<body>
+    <div class="center">
+        <div class="cores">
+            <span>(R) Vermelho:</span>
+            <input type="range" id="rangeRed" value="0" min="0" max="255">
+            <input type="text" id="textRed" disabled >
+        </div>
+        <div class="cores">
+            <span>(G) Verde:</span>
+            <input type="range" id="rangeGreen" value="0" min="0" max="255">
+            <input type="text" id="textGreen" disabled>
+        </div>
+        <div class="cores">
+            <span>(B) Azul:</span>
+            <input type="range" id="rangeBlue" value="60" min="0" max="255">
+            <input type="text" id="textBlue" disabled onchange="alteracaoBlue()">
+        </div>
+        <div id="quadrado">
+
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>

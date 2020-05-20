@@ -1,0 +1,21 @@
+*{
+}
+li{
+    list-style-type: none;
+}
+.clicavel{
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.btnDeletar{
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    background-color: red;
+    font-size: 14px;
+    border: 2px solid black;
+    box-shadow: 3px 3px 5px black;
+    margin-right: 10px;
+    margin-top: 10px;
+}

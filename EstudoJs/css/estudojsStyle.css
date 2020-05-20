@@ -1,0 +1,67 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#center{
+    width: 1080px;
+    margin: 0 auto;
+}
+form{
+    font-family: 'DM Mono', monospace;
+    width: 400px;
+    height: auto;
+    border: 2px solid #ccc;
+    text-align: center;
+    padding-top: 24px;
+    margin: 0 auto;
+    border-radius: 30px;
+    background-color: snow;
+}
+.tabela{
+    width: 100%;
+    height: 100%;
+}
+.tabela div span, .tabela div input[type='text']{
+    position: relative;
+    top: -2px;
+    font-size: 20px;
+    text-align: center;
+}
+.tabela div span{
+    font-size: 30px;
+    padding-right: 10px;
+}
+.tabela div{
+    margin: 30px 0 15px 0;
+    display: block;
+}
+input[type='range']{
+    width: 200px;
+    margin: 0 8px;
+}
+.tabela div input[type='text']{
+    width: 70px;
+    padding: 2px 4px;
+    top: -4px;
+}
+.tabela input[type='submit']{
+    padding: 8px 10px;
+    margin: 10px 12px;
+}
+.alterarFonte{
+    font-family: 'Roboto', sans-serif;
+}
+.arrastarParaBaixo{
+    transition: 4s;
+    padding-top: 120px;
+}
+.arrastarParaCima{
+    transition: 4s;
+    padding-top: -120px;
+}
+
+
+
+
+
