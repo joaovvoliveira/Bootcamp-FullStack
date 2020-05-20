@@ -2,8 +2,54 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/formStyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Projeto Form</title>
   </head>
-  <body></body>
+  <body>
+    <div class="center">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nome Completo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Um nome Qualquer"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >Nunca vamos compartilhar seu email, com ninguém.</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Qualquer número"
+          />
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Clique em mim</label
+          >
+        </div>
+        <button id="btnEnviar" type="submit" class="btn btn-primary">
+          Enviar
+        </button>
+      </form>
+    </div>
+
+    <script src="./js/script.js"></script>
+  </body>
 </html>
