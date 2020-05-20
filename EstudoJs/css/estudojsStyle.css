@@ -60,6 +60,21 @@ input[type='range']{
     transition: 4s;
     padding-top: -120px;
 }
+.animacao{
+    animation-name: anima_form;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+}
+
+@keyframes anima_form{
+    50%{
+        transform: rotate(360deg);
+    }
+
+    100%{
+        transform: rotate(0deg);
+    }
+}
 
 
 

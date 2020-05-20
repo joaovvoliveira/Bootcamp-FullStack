@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/estudojsStyle.css">
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&family=DM+Mono:ital,wght@1,300&family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/estudojsStyle.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&family=DM+Mono:ital,wght@1,300&family=Roboto:ital,wght@1,300&display=swap"
+      rel="stylesheet"
+    />
     <title>Estudo</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="center">
-        <form id="formu">
-            <div class="tabela">
-                <h2>Criando uma escala RGB Interativa</h2>
-                <div>
-                    <span>R:</span>
-                    <input type="range" id="rangeRed">
-                    <input type="text" id="textRed" min="0" max="255" disabled>
-                </div>
-                <div>
-                    <span>G:</span>
-                    <input type="range" id="rangeGreen">
-                    <input type="text" id="textGreen" min="0" max="255" disabled>
-                </div>
-                <div>
-                    <span>B:</span>
-                    <input type="range" id="rangeBlue">
-                    <input type="text" id="textBlue" min="0" max="255" disabled>
-                </div>
-                <input type='submit' id='btn1' value="Clique 1x">
-                <input type="submit" id='btn2' value="Descer(1x)">
-                <input type="submit" id='btn3' value="Alongar">
-            </div>
-        </form>
+      <form id="formu">
+        <div class="tabela">
+          <h2>Criando uma escala RGB Interativa</h2>
+          <div>
+            <span>R:</span>
+            <input type="range" id="rangeRed" min="0" max="255" />
+            <input type="text" id="textRed" disabled />
+          </div>
+          <div>
+            <span>G:</span>
+            <input type="range" id="rangeGreen" min="0" max="255" />
+            <input type="text" id="textGreen" disabled />
+          </div>
+          <div>
+            <span>B:</span>
+            <input type="range" id="rangeBlue" min="0" max="255" />
+            <input type="text" id="textBlue" disabled />
+          </div>
+          <input type="submit" id="btn1" value="Clique 1x" />
+          <input type="submit" id="btn2" value="Descer(1x)" />
+          <input type="submit" id="btn3" value="Girar" />
+        </div>
+      </form>
     </div>
     <script src="./js/estudojs.js"></script>
-</body>
+  </body>
 </html>
