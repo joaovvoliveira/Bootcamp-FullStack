@@ -1,114 +1,116 @@
-window.addEventListener('load', start)
+window.addEventListener('load', () => {
+  prevencao();
+  ativarInput();
+  render();
+});
 
-globalNomes = ['João', 'Victor', 'Patrícia', 'Larissa']
-var input = null;
-var convert = null;
-var isEditing = false;
-var indexAtual = null;
+const globalNomes = ['João', 'Victor', 'Patrícia', 'Larissa'];
 
-function start(){
+let input = null;
+let convert = null;
+let isEditing = false;
+let indexAtual = null;
 
-    prevencao();
-    ativarInput();
+prevencao = () => {
+  prevenir = (event) => {
+    event.preventDefault();
+  };
+  var form = document.querySelector('form');
+  form.addEventListener('submit', prevenir);
+};
+
+ativarInput = () => {
+  adicionarNome = (novoNome) => {
+    // globalNomes.push(novoNome);
+    globalNomes = [...globalNomes, novoNome];
+    input.value = '';
+    alert('Nome Adicionado com sucesso');
+  };
+};
+
+updateName = (novoNome) => {
+  globalNomes[indexAtual] = novoNome;
+};
+
+handleTyping = (event) => {
+  if (event.key === 'Enter' && input.value != '') {
+    if (isEditing == false) {
+      var nomeAdicionar = event.target.value;
+      adicionarNome(nomeAdicionar);
+    } else {
+      var nomeAdicionar = event.target.value;
+      updateName(nomeAdicionar);
+    }
+
+    isEditing = false;
     render();
-}    
+  }
+};
 
-function prevencao(){
-    function prevenir(event){
-        event.preventDefault();
-    }
-    var form = document.querySelector('form')
-    form.addEventListener('submit', prevenir)
-}
+input = document.querySelector('#inputName');
+input.focus();
+input.addEventListener('keyup', handleTyping);
 
-function ativarInput(){
+render = () => {
+  var nomes = document.querySelector('#nomes');
+  nomes.innerHTML = '';
+  var ul = document.createElement('ul');
+  nomes.appendChild(ul);
 
-    function adicionarNome(novoNome){
-        globalNomes.push(novoNome)
-        input.value = "";
-        alert('Nome Adicionado com sucesso')
-    }
+  createButton = (index) => {
+    excluir = () => {
+      // globalNomes.splice(index, 1);
+      globalNomes = globalNomes.filter((name, i) => {
+        //   // if ( i === index){
+        //   //   return false;
+        //   // }
+        //   // return true;
+        return i !== index;
+      });
+      render();
+    };
+    var button = document.createElement('button');
+    button.textContent = 'x';
 
-    function updateName(novoNome){
-        globalNomes[indexAtual] = novoNome;
-    }
+    button.addEventListener('click', excluir);
 
-    function handleTyping(event){
-        if(event.key === 'Enter' && input.value != ''){
-            if(isEditing == false){
-                var nomeAdicionar = event.target.value;
-                adicionarNome(nomeAdicionar);
-            }
-            else{
-                var nomeAdicionar = event.target.value;
-                updateName(nomeAdicionar)
-            }
-            
-            isEditing = false;
-            render()
-        } 
+    return button;
+  };
 
-    }
+  createSpan = (nomeAtual, index) => {
+    editItem = () => {
+      isEditing = true;
+      input.value = nomeAtual;
+      input.focus();
+      indexAtual = index;
+    };
 
-    input = document.querySelector('#inputName');
-    input.focus();
-    input.addEventListener('keyup', handleTyping)
-}
+    var span = document.createElement('span');
+    span.textContent = nomeAtual;
 
-function render(){
+    span.addEventListener('click', editItem);
 
-    var nomes = document.querySelector('#nomes')
-    nomes.innerHTML = ""
-    var ul = document.createElement('ul')
-    nomes.appendChild(ul)
+    return span;
+  };
 
-    function createButton(index){
-        function excluir(){
-            globalNomes.splice(index, 1)
-            render();
-        }
-        var button = document.createElement('button')
-        button.textContent = 'x';
+  for (var i = 0; i < globalNomes.length; i++) {
+    var nomeAtual = globalNomes[i];
 
-        button.addEventListener('click', excluir)
+    var li = document.createElement('li');
 
-        return button
-    }
+    var button = createButton(i);
+    var span = createSpan(nomeAtual, i);
 
-    function createSpan(nomeAtual, index){
-        function editItem(){
-            isEditing = true;
-            input.value = nomeAtual;
-            input.focus();
-            indexAtual = index
-        }
+    span.classList.add('clicavel');
+    button.classList.add('btnDeletar');
 
-        var span = document.createElement('span')
-        span.textContent = nomeAtual
+    li.appendChild(button);
+    li.appendChild(span);
+    ul.appendChild(li);
+  }
+};
 
-        span.addEventListener('click', editItem)
-
-        return span
-    }
-
-    for(var i = 0; i < globalNomes.length; i++){
-        var nomeAtual = globalNomes[i];
-        
-        var li = document.createElement('li');
-        
-        var button = createButton(i);
-        var span = createSpan(nomeAtual, i);
-
-        span.classList.add('clicavel')
-        button.classList.add('btnDeletar')
-
-        li.appendChild(button)
-        li.appendChild(span)
-        ul.appendChild(li);
-    }
-
-
-    /*
+/*
     var ul = document.createElement('ul')
     var li1 = document.createElement('li')
     var li2 = document.createElement('li')
@@ -118,5 +120,4 @@ function render(){
     ul.appendChild(li1)
     ul.appendChild(li2)
     nomes.appendChild(ul)
-    */
-}
+*/

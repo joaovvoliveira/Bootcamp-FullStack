@@ -1,5 +1,3 @@
-window.addEventListener('load', start);
-
 var globalNames = [
   'João Victor',
   'Patrícia Saretto',
@@ -11,12 +9,11 @@ var inputName = null;
 var currentIndex = null;
 
 function start() {
-  inputName = document.querySelector('#inputName');
-
   preventFormSubmit();
   activeInput();
   render();
 }
+window.addEventListener('load', start);
 
 function preventFormSubmit() {
   function handleFormSubmit(event) {
@@ -29,28 +26,31 @@ function preventFormSubmit() {
 function activeInput() {
   function insertName(newName) {
     globalNames.push(newName);
-    render();
+    inputName.value = '';
   }
+
   function updateName(newName) {
     globalNames[currentIndex] = newName;
-    render();
   }
 
   function handleTyping(event) {
     if (event.key === 'Enter') {
-      if (isEditing) {
-        updateName(event.target.value);
-      } else {
+      if (isEditing == false) {
         insertName(event.target.value);
-        clearInput();
+      } else {
+        updateName(event.target.value);
       }
 
       isEditing = false;
+      render();
     }
   }
+
   function clearInput() {
     inputName.value = '';
   }
+
+  inputName = document.querySelector('#inputName');
   inputName.focus();
   inputName.addEventListener('keyup', handleTyping);
 }
@@ -60,6 +60,7 @@ function render() {
   divNames.classList.add('center');
   divNames.innerHTML = '';
   var ul = document.createElement('ul');
+  divNames.appendChild(ul);
 
   function createButton(index) {
     function deleteName() {
@@ -69,7 +70,6 @@ function render() {
 
     var btn = document.createElement('button');
     btn.textContent = 'X';
-    btn.classList.add('btnExcluir');
 
     btn.addEventListener('click', deleteName);
 
@@ -78,14 +78,13 @@ function render() {
 
   function createSpan(nome, index) {
     function editItem() {
+      isEditing = true;
       inputName.value = nome;
       inputName.focus();
-      isEditing = true;
       currentIndex = index;
     }
     var span = document.createElement('span');
     span.textContent = nomeAtual;
-    span.classList.add('cursorP');
 
     span.addEventListener('click', editItem);
 
@@ -94,15 +93,17 @@ function render() {
 
   for (var i = 0; i < globalNames.length; i++) {
     var nomeAtual = globalNames[i];
+
     var li = document.createElement('li');
 
     var button = createButton(i);
     var span = createSpan(nomeAtual, i);
 
+    btn.classList.add('btnExcluir');
+    span.classList.add('cursorP');
+
     li.appendChild(button);
     li.appendChild(span);
-
     ul.appendChild(li);
   }
-  divNames.appendChild(ul);
 }
