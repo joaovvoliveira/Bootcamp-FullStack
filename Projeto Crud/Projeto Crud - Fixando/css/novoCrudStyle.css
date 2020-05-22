@@ -1,0 +1,20 @@
+.center {
+  width: 1080px;
+  margin: 0 auto;
+}
+.cursorP {
+  cursor: pointer;
+}
+.btnExcluir {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(250, 94, 94);
+  border: 2px solid black;
+  box-shadow: 3px 3px 3px #ccc;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+ul li {
+  list-style-type: none;
+}
