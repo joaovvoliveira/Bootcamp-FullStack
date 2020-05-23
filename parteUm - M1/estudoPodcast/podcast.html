@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/podcastStyle.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Podcast</title>
+  </head>
+  <body>
+    <div class="center">
+      <h1>Rádio Podcast</h1>
+      <div>
+        <input
+          id="inputRange"
+          type="range"
+          min="87.5"
+          max="108"
+          step="0.1"
+          value="87.5"
+        />
+      </div>
+      <div>
+        <input id="inputFrequency" type="text" readonly disabled />
+      </div>
+      <div id="divPodcasts">
+        <p>Podcast</p>
+      </div>
+    </div>
+  </body>
+  <script src="./js/podcast2.js"></script>
+  <script src="./js/script.js"></script>
+</html>
