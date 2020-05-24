@@ -1,26 +1,60 @@
 window.addEventListener('load', () => {
-  doMap();
-  doFilter();
-  doForEach();
-  doReduce();
-  doFind();
-  doSome();
   doEvery();
-  doSort();
 });
 
-function doMap() {
-  const nameEmailArray = people.results.map(person => {
-    return {
-      name: person.name,
-      email: person.email
-    };
+function doEvery() {
+  const every = people.results.every((person) => {
+    return person.nat === 'BR';
   });
-
-  console.log(nameEmailArray);
-
-  return nameEmailArray;
+  console.log(every);
 }
+function doReduce() {
+  const total = people.results.reduce((acc, cur) => {
+    return acc + cur.dob.age;
+  }, 0);
+  console.log(total);
+// }
+// function doMap() {
+//   const nomes = people.results.map((banana) => {
+//     return {
+//       nome: banana.name.first,
+//       sobre: banana.name.last,
+//     };
+//   });
+//   return nomes;
+// }
+
+// function insertInitial() {
+//   const map = people.results
+//     .map((person) => {
+//       return {
+//         nome: person.name.first,
+//       };
+//     })
+//     .filter((person1) => {
+//       return person1.nome.startsWith('A');
+//     });
+//   console.log(map);
+// }
+
+// .forEach((person2) => {
+//   person2.Initial = 'A';
+// });
+// function doFilter() {
+//   const var1 = people.results.filter((person) => {
+//     return person.name.first.length < 5;
+//   });
+//   console.log(var1);
+// };
+
+/*
+function doFilter() {
+  const var2 = people.results.filter((person) => {
+    return person.name.title === 'Mr' || person.name.title === 'Ms';
+  });
+  console.log(var2);
+}
+/*
 
 function doFilter() {
   const olderThan50 = people.results.filter(person => {
@@ -42,24 +76,28 @@ function doForEach() {
 
   console.log(mappedPeople);
 }
+*/
+// function doReduce() {
+// const totalAges = people.results.reduce((accumulator, current) => {
+//   return accumulator + current.dob.age;
+// }, 0);
 
-function doReduce() {
-  const totalAges = people.results.reduce((accumulator, current) => {
-    return accumulator + current.dob.age;
-  }, 0);
+// console.log(totalAges);
 
-  console.log(totalAges);
+// const totalAges = people.results.reduce((acc, cur) => {
+//   return acc + cur.dob.age;
+// }, -6);
 
-  // let sumAges = 0;
+// console.log(totalAges);
+// let sumAges = 0;
 
-  // for (let i = 0; i < people.results.length; i++) {
-  //   var current = people.results[i];
-  //   sumAges += current.dob.age;
-  // }
+// for (let i = 0; i < people.results.length; i++) {
+//   var current = people.results[i];
+//   sumAges += current.dob.age;
+// }
 
-  // console.log(sumAges);
-}
-
+// console.log(sumAges);
+/*
 function doFind() {
   const found = people.results.find(person => {
     return person.location.state === 'Minas Gerais';
@@ -98,4 +136,4 @@ function doSort() {
     });
 
   console.log(mappedNames);
-}
+*/
