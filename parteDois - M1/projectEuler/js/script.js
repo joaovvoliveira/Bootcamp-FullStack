@@ -1,4 +1,68 @@
-'use strict';
+"use strict";
+window.addEventListener("load", () => {
+  const div = document.querySelector("#center");
+  let count = 0;
+
+  const contagem = setInterval(() => {
+    div.textContent = ++count;
+    if (count === 10) {
+      clearInterval(contagem);
+      return;
+    }
+    setTimeout(() => {
+      if (count % 5 === 0) {
+        div.textContent = count + ",5";
+      }
+    }, 0);
+    div.textContent = count;
+  }, 1000);
+});
+/*
+async function peoplesArray() {
+  const res = await fetch(
+    "https://randomuser.me/api/?seed=javascript&results=100&nat=BR&noinfo"
+  );
+  const peoples = await res.json();
+
+  const loginAge = peoples.results.map((person) => {
+    const { name, location, login, dob } = person;
+    return {
+      firstName: name.first,
+      city: location.city,
+      user: login.username,
+      age: dob.age,
+    };
+  });
+  const menor30 = loginAge.filter((person) => {
+    return person.age < 30;
+  });
+  console.log(menor30);
+  const maior50 = loginAge.filter((person) => {
+    return person.age > 50;
+  });
+  console.log(maior50);
+
+  const menor30maior50 = [...menor30, ...maior50];
+  console.log(menor30maior50);
+
+  const mappedPeople = loginAge;
+
+  mappedPeople.forEach((person) => {
+    person.fullName = person.firstName + " Oliveira";
+  });
+
+  console.log(mappedPeople);
+
+  const array = [1, 2, 3, 4, 5, 6];
+  function f2() {
+    return array
+      .map((item) => item * 2)
+      .filter((item) => item % 3 === 0)
+      .reduce((acc, cur) => acc + cur, 0);
+  }
+  console.log(f2());
+}
+peoplesArray();
 
 var total = 0;
 var total1 = 0;
@@ -15,9 +79,8 @@ for (var i = 1; i < 100; i++) {
   if (a < 4000000) {
     console.log(a);
   }
-}
+} 
 
-/*
 var x let x const
 
 function withVar() {
