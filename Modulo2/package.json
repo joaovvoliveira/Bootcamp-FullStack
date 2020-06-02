@@ -1,0 +1,15 @@
+{
+  "name": "index.js",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "modulo2",
+  "main": "./js/index.js",
+  "scripts": {
+    "test": "npm install express"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
+}

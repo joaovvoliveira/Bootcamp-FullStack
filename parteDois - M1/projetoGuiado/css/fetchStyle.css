@@ -25,6 +25,11 @@ img {
   display: inline-block;
   margin: 10px 0;
 }
+ul li {
+  list-style-type: none;
+  position: relative;
+  top: 10px;
+}
 
 .btn {
   cursor: pointer;
@@ -40,7 +45,7 @@ body .center {
 }
 .country-list {
   float: left;
-  width: 300px;
+  width: auto;
   padding: 8px;
   margin-right: 20px;
   border: 1px solid gray;

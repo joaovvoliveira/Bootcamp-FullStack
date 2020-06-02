@@ -3,20 +3,25 @@ window.addEventListener("load", () => {
   const div = document.querySelector("#center");
   let count = 0;
 
-  const contagem = setInterval(() => {
-    div.textContent = ++count;
-    if (count === 10) {
-      clearInterval(contagem);
-      return;
-    }
-    setTimeout(() => {
-      if (count % 5 === 0) {
-        div.textContent = count + ",5";
-      }
-    }, 0);
-    div.textContent = count;
-  }, 1000);
+  console.log(gitJoao());
+  console.log(gitJooao());
 });
+
+function gitJooao() {
+  const gitJ = fetch("https://api.github.com/users/joaovvoliveira").then(
+    (res) => {
+      res.json().then((json) => {
+        return console.log(json);
+      });
+    }
+  );
+}
+
+async function gitJoao() {
+  const res = await fetch("https://api.github.com/users/joaovvoliveira");
+  const json = await res.json();
+  return console.log(json);
+}
 /*
 async function peoplesArray() {
   const res = await fetch(
