@@ -108,6 +108,31 @@ router.put("/", (req, res) => {
   });
 });
 
+router.post("/deposit", (req, res) => {
+  let params = req.body;
+  fs.readFile(global.fileName, "utf8", (err, data) => {
+    try {
+      if (err) throw err;
+
+      let json = JSON.parse(data);
+      let index = json.account.findIndex((account) => account.id == params.id);
+      if (params.balance < 0)
+        throw new Error("Não pode depositar valor negativo");
+      json.account[index].balance += params.balance;
+
+      fs.writeFile(global.fileName, JSON.stringify(json), (err) => {
+        if (err) {
+          res.status(400).send({ error: err.message });
+        } else {
+          res.end();
+        }
+      });
+    } catch (err) {
+      res.status(400).send({ error: err.message });
+    }
+  });
+});
+
 router.post("/saque", (req, res) => {
   let params = req.body;
   fs.readFile(global.fileName, "utf8", (err, data) => {
@@ -116,8 +141,9 @@ router.post("/saque", (req, res) => {
 
       let json = JSON.parse(data);
       let index = json.account.findIndex((account) => account.id == params.id);
-      if (params.balance < 0) throw err;
-      if (params.balance > json.account[index].balance) throw err;
+      if (params.balance < 0) throw new Error("Não pode Valor negativo");
+      if (params.balance > json.account[index].balance)
+        throw new Error("Não pode sacar valor maior que o saldo");
       json.account[index].balance -= params.balance;
 
       fs.writeFile(global.fileName, JSON.stringify(json), (err) => {

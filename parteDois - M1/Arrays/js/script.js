@@ -1,16 +1,10 @@
-window.addEventListener("load", () => {
-  const divTimer = document.querySelector("#divTimers");
-  divTimer.textContent = count;
-  contagem();
-});
-let count = 0;
-function contagem() {
-  const cont = setInterval(() => {
-    divTimer.textContent = ++count;
-    console.log(divTimer);
-  }, 1000);
-}
+const allCidades = [];
+const allEstados = [];
+const cidadesEstados = [];
 
+function start() {}
+
+start();
 /*
 function doMap() {
   const homens = people.results
