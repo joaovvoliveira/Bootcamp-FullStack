@@ -13,10 +13,11 @@ function capEstados() {
     const { ID, Sigla, Nome } = estado;
     return {
       idEstado: ID,
-      sigla: Sigla,
+      Sigla,
       nomeEstado: Nome,
     };
   });
+  console.log(allEstados);
 }
 function capCidades() {
   allCidades = cidades.map((cidade) => {
@@ -36,6 +37,7 @@ function render() {
   countCidadesPorEstado();
   maiorNome();
   menorNome();
+  teste();
 }
 
 function capCidadeEstados() {
@@ -44,9 +46,28 @@ function capCidadeEstados() {
       return estado.idEstado === cidade.fkCidadeEstado;
     });
 
-    allCidadesEstados.push({ ...cidade, ...cidadeEstado });
+    allCidadesEstados.push({ cidadeEstado, ...cidade });
   });
   console.log(allCidadesEstados);
+}
+
+function teste() {
+  let num = 0;
+  const res = allCidadesEstados.map((cidade) => {
+    const {
+      idCidade,
+      nomeCidade,
+      cidadeEstado: { Sigla, nomeEstado },
+    } = cidade;
+    return {
+      idCidade,
+      nomeCidade,
+      siglaEstado: cidade.cidadeEstado.sigla,
+      nomeEstado,
+    };
+    num++;
+  });
+  console.log(res);
 }
 
 /*(x) Criar um método que recebe como parâmetro o UF do estado, realize a leitura do arquivo JSON 
