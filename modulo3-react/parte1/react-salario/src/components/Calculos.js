@@ -1,9 +1,17 @@
 import React, { Component } from "react";
-import App from "../App";
-import salary from "../salary";
+// import App from "../App";
+// import salary from "../salary";
 
 export default class Calculos extends Component {
   // const { salarioBruto,baseINSS, descontoINSS, baseIRPF,descontoIRPF, salarioLiquido} = this.props;
+  calcularValores = (props) => {
+    const { calcular } = this.props;
+
+  };
+  handleCalcValue = () => {
+
+  }
+
   constructor() {
     super();
 
@@ -11,11 +19,6 @@ export default class Calculos extends Component {
       fullSalary: 0,
       calcINSS: 0,
     };
-  }
-
-  async componentDidMount() {
-    const res = await fetch("./salary.js");
-    const json = await res.json();
   }
 
   valorSalario = (event) => {
@@ -26,13 +29,13 @@ export default class Calculos extends Component {
     }
   };
 
-  calcINSS = () => {
+  calcINSS = (param) => {
     const { fullSalary, calcINSS } = this.state;
     console.log(fullSalary);
   };
 
   render() {
-    const { fullSalary } = this.state;
+    const { fullSalary, calcINSS } = this.state;
     return (
       <div className="container">
         <div></div>
@@ -45,11 +48,11 @@ export default class Calculos extends Component {
         <div className="row">
           <div className="col s3">
             <p>BASE INSS</p>
-            <input type="text" readOnly value={`R$ ${fullSalary}`} />
+            <input type="text" readOnly value={3 + 2} />
           </div>
           <div className="col s3">
             <p>Desconto INSS</p>
-            <input type="text" readOnly value={this.calcINSS} />
+            <input type="text" readOnly />
           </div>
           <div className="col s3">
             <p>Base IRPF</p>

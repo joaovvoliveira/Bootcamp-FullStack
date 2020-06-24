@@ -12,11 +12,19 @@ export default class App extends Component {
     };
   }
 
+  async componentDidMount() {
+    const data = await fetch("./salary.js");
+    console.log(data);
+    const json = await data.json();
+    console.log(json);
+  }
+
   render() {
+    const { fullSalary } = this.state;
     return (
       <div>
         <Title />
-        <Calculos />
+        <Calculos calcular={fullSalary} />
       </div>
     );
   }

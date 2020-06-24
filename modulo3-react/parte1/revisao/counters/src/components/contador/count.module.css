@@ -1,0 +1,15 @@
+.btnD {
+  width: 30px;
+  height: 30px;
+}
+.btnI {
+  width: 30px;
+  height: 30px;
+}
+.words {
+  padding: 0 10px;
+  font-size: 20px;
+}
+.contador {
+  margin: 10px 0;
+}
