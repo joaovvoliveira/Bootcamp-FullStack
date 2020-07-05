@@ -25,7 +25,7 @@ export default class App extends Component {
             candidates: json.candidates,
           });
         });
-    }, 5000);
+    }, 2000);
   }
 
   render() {

@@ -1,10 +1,10 @@
 import React from "react";
-
+import css from "./spinner.module.css";
 export default function Spinner(props) {
   const { description } = props;
 
   return (
-    <div>
+    <div className={css.flexRow}>
       <div className="preloader-wrapper big active">
         <div className="spinner-layer spinner-blue">
           <div className="circle-clipper left">
@@ -18,7 +18,7 @@ export default function Spinner(props) {
           </div>
         </div>
       </div>
-      {description}
+      <div style={{ fontSize: "30px" }}>{description}</div>
     </div>
   );
 }

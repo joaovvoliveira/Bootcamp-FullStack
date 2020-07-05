@@ -1,0 +1,74 @@
+[
+  {
+    "_id": "ObjectId(5f0015419872cdd16a2c7332)",
+    "name": "Patrícia Saretto",
+    "nota": "8",
+    "subject": "Desafio",
+    "mediaFinal": "6",
+    "school": "Uniso",
+    "lastModify": "ISODate(2020-07-04T07:02:51.086Z)"
+  },
+  {
+    "_id": "ObjectId(5f0015419872cdd16a2c7333)",
+    "name": "Moises de Souza",
+    "nota": "9",
+    "subject": "Aula Interativa",
+    "mediaFinal": "6.2",
+    "school": "Uniso",
+    "lastModify": "ISODate(2020-07-04T07:02:51.086Z)"
+  },
+  {
+    "_id": "ObjectId(5f0015419872cdd16a2c7334)",
+    "name": "Larissa Gonzales",
+    "nota": "9.2",
+    "subject": "Exercicio",
+    "mediaFinal": "7.5",
+    "school": "Uniso",
+    "lastModify": "ISODate(2020-07-04T07:02:51.086Z)"
+  },
+  {
+    "_id": "ObjectId(5f0016fb9872cdd16a2c7335)",
+    "name": "João Victor",
+    "nota": "10",
+    "subject": "Desafio",
+    "mediaFinal": "10",
+    "school": "Uniso",
+    "lastModify": "ISODate(2020-07-04T07:02:51.086Z)"
+  },
+  {
+    "_id": "ObjectId(5f001e1b9872cdd16a2c7336)",
+    "name": "Jefferson Saretto",
+    "nota": "7",
+    "subject": "Aula Prática",
+    "mediaFinal": "8",
+    "school": "Uniso",
+    "lastModify": "ISODate(2020-07-04T07:02:51.086Z)"
+  },
+  {
+    "_id": "ObjectId(5f001e1b9872cdd16a2c7337)",
+    "name": "Plinio de Souza",
+    "nota": "8",
+    "subject": "Aula Interativa",
+    "mediaFinal": "9.2",
+    "school": "Uniso",
+    "lastModify": "ISODate(2020-07-04T07:02:51.086Z)"
+  },
+  {
+    "_id": "ObjectId(5f001edd9872cdd16a2c7339)",
+    "name": "Lucas Vianna",
+    "nota": "7",
+    "subject": "Aula Prática",
+    "mediaFinal": "6",
+    "school": "Uniso",
+    "lastModify": "ISODate(2020-07-04T07:02:51.086Z)"
+  },
+  {
+    "_id": "ObjectId(5f001edd9872cdd16a2c733b)",
+    "name": "Nicole Aninston",
+    "nota": "10",
+    "subject": "Aula Prática",
+    "mediaFinal": "10",
+    "school": "Uniso",
+    "lastModify": "ISODate(2020-07-04T07:02:51.086Z)"
+  }
+]

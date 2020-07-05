@@ -1,0 +1,132 @@
+mongod --path="C:\IGTI\modulo4-mongo\projeto1\data" // Inicia o Servidor do Mongo
+
+mongo -host localhost:27017 // Comando para acessar o Banco em outra linha de Comando
+
+//Create
+// Pode criar um collection inserindo direto ou db.createCollection("Nome")
+	
+	{"name": "Dona Maria", "nota": 8, "subject":"Aula Interativa", "mediaFinal": 9}
+	
+	db.alunos.insert({},{}) // Insere dados
+	{
+		db.alunos.insert
+		([
+			{"name": "Lucas Vianna", "nota":7, "subject":"Exercicio", "mediaFinal": 6},
+			{"name": "Cauê Paiva", "nota":5, "subject":"Desafio", "mediaFinal": 6},
+			{"name": "Nicole Aninston", "nota":10, "subject":"Desafio", "mediaFinal": 10}
+		])
+	}
+	db.alunos.replace({},{}) // Substitui todo um documento por outro
+	{
+		db.alunos.replaceOne({name: "Cauezera"},{"name" : "Cauezera",
+        "nota" : 8,
+        "subject" : "Desafio",
+        "mediaFinal" : 6,
+        "school" : "Uniso",
+        "lastModify" : ISODate("2020-07-04T07:02:51.086Z")})
+		// Substituiu onde estava o nome "Cauezera", por todos esses campos
+	}
+ 	db.alunos.find({},{}) // Trás todos os documentos
+	{
+		db.alunos.find({},{_id: 0, name: 1, nota: 1}) // Traria todos os campos, exceto o ID
+		db.alunos.find().limit(3) // Traria apenas os 3 primeiros
+		db.alunos.find().skip(2) // Pularia 2 elementos, e traria o resto
+		db.alunos.find().sort({name: 1}) // Ordena pelo nome e Ordem crescente A - Z
+		db.alunos.find().sort({name: -1}) // Ordena pelo nome e Ordem decrescente Z - A
+		// Com Query
+		db.alunos.find({subject: "Desafio"},{_id: 0}).pretty() // Trás apenas com Subject Desafio
+		db.alunos.find({$and:[{subject: "Desafio"},{nota: 10}]},{_id: 0}).pretty() // Trás todos Desafios e Nota 10
+		db.alunos.find({$nor:[{subject: "Desafio"},{nota: 10}]},{_id: 0}).pretty() // Tudo que não é um ou outro
+		// Comparação
+		db.alunos.find({mediaFinal: {$gt: 9}},{_id: 0}).pretty() // Média > 9
+		db.alunos.find({$and:[{subject: "Desafio"},{nota: {$eq: 8}}]},{_id: 0}).pretty() // Trás quem for Desafio e nota igual a 8
+		
+		Lógicos: $and $not $nor $or
+		Comparadores: $eq = $gt > $gte >= $lt < $lte <= $ne != $ni $in 
+	}
+	db.alunos.update({},{})// updateMany // Substitui todos os dados
+	{ // Sempre utilizar o $set para dizer que vai ser inserido
+		db.alunos.updateOne({name: "Cauê Paiva"},{$set:{name: "Cauezera"}}) // Altera o Campo name
+		db.alunos.updateOne({$and: [{subject: "Desafio"},{nota: 10}]},{$set: {mediaFinal: 10}}) // Altera a mediaFinal onde nota 10 e Desafio
+		db.alunos.updateOne({name: "Cauezera"},{$inc: {mediaFinal: 1}}) // Acrescenta + 1 no name Cauezera
+		db.alunos.updateMany({lastModify: "$$now"},{$currentDate: {lastModify: true, timestamp: {$type: "timestamp"} }}) // Cria um Campo a dataHora Atual
+		db.alunos.updateMany({},{$unset: {timestamp: 1}}) // Estou removendo todos os campos Timestamp (1 == true)
+	}
+	db.alunos.delete({},{}) // Exclui dados
+	{
+		db.alunos.deleteOne({$and: [{nota: 9.8},{subject: "Desafio"}]}) // Excluiu uma pessoa quem teve note 9.8 e Desafio
+		db.aunos.deteleMany({subject: "Desafio"}) // Excluiu todos que fizeram "Desafio"
+	}
+	db.alunos.bulkWrite
+	([
+			{insertOne:
+			{
+				"document":
+				{
+					name: "Paulinha",
+					nota:"8",
+					subject: "Desafio",
+					mediaFinal: 8.4
+				}
+			}},
+			{
+			insertOne:
+			{
+				"document":
+				{
+					name: "Jessica",
+					nota:"10",
+					subject: "Aula Interativa",
+					mediaFinal: 9.2
+				}
+			}},
+			{updateOne:
+			{
+				"filter":
+				{
+					name: "Dona Maria"
+				},
+				"update": 
+					{$set: {subject: "Exercicio"}}
+			}},
+			{deleteOne:
+			{
+				"filter":
+				{
+					name: "Patrícia Saretto"
+				}
+			}},
+			{replaceOne:
+			{
+				"filter":
+				{
+					name: "Lucas Vianna"
+				},
+				"replacement":
+				{
+					"name": "Lucas Vinhana", "nota":8, "subject":"Exercicio", "mediaFinal": 6
+				}
+			}}	
+	])
+
+//Trabalhando com Indices
+
+db.alunos.getIndexes() // Utilizado para mostrar os Indices já disponíveis
+db.alunos.createIndex({name: -1}) // Cria um Indice em "name", de orderm decrescente
+db.alunos.dropIndex("Nome do Index")
+
+// Agregações no MongoDB
+
+	db.alunos.aggregate({},{})
+	{
+		db.alunos.aggregate([$group: {_id: null, soma: {$sum: "$nota"}}]) // Realiza a Soma de Todas as notas
+		db.alunos.aggregate([$group: {_id: null, soma: {$avg: "$nota"}}]) // Realiza a Media de Todas as notas
+		db.alunos.aggregate([{$match: {subject: "Desafio"}},$group: {_id: null, soma: {$sum: "$nota"}}]) // Realiza a Soma de Todas as notas com Subject "Desafio"
+		db.alunos.aggregate([{$group: {_id: {subject: "$subject"}, soma: {$sum: "$nota"}}}]) // Realiza a contagem por Subject
+		db.alunos.aggregate([{$group: {_id: {subject: "$subject"}, soma: {$sum: "$nota"}}},{$sort: {_id: 1}}]) // Realiza a Contagem e Organiza pelo Subject
+		db.alunos.count({subject: 'Aula Prática'}) // Conta quantos atendem ao Elemento (Não possui uma acurácia 100%)
+		db.alunos.countDocuments({subject: 'Aula Prática'}) // Valor Efetivo com a Qtd de Registros
+		db.alunos.countDocuments({subject: 'Aula Prática', nota: {$eq: 7}}) // Qtd Aula prática E nota == 7
+		db.alunos.distinct("subject") // Trás todos os Subjects, em Array
+		db.alunos.distinct("name") // Trás todos os nomes
+	}

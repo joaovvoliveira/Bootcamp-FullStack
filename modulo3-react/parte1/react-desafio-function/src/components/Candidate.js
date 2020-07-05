@@ -6,20 +6,22 @@ import Name from "./Name";
 import Votes from "./Votes";
 import Percentage from "./Percentage";
 import Popularity from "./Popularity";
+import css from "./candidate.module.css";
+import { formatNumber, formatPorcentage } from "../helpers/formatHelpers";
 
 export default function Candidate({ candidate, position }) {
-  const { id, name, votes, percentage, popularity } = candidate;
+  const { id, name, votes, percentage, popularity, voteCount } = candidate;
 
   const imageSource = `${id}.jpg`;
   const title = `Vingador ${id}`;
   return (
-    <div>
+    <div className={css.flexRow}>
       <Position>{position}</Position>
       <Picture imageSource={imageSource} description={title} />
       <Info>
         <Name>{name}</Name>
-        <Votes>{votes}</Votes>
-        <Percentage>{percentage}</Percentage>
+        <Votes value={votes} count={voteCount}></Votes>
+        <Percentage>{formatPorcentage(percentage)}</Percentage>
         <Popularity value={popularity} max={10}></Popularity>
       </Info>
     </div>

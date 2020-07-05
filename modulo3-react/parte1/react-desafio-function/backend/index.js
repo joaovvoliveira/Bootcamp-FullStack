@@ -39,7 +39,7 @@ const CONSTS = {
   MIN_POPULARITY: 1,
   MIN_VOTES: 1,
   MAX_VOTES: 1000,
-  INTERVAL_VOTES: 100,
+  INTERVAL_VOTES: 999,
   INTERVAL_POPULARITY: 10000,
 };
 
@@ -60,6 +60,7 @@ function fillCandidates() {
       id: 1,
       name: "Homem de Ferro",
       votes: 0,
+      voteCount: 0,
       percentage: 0,
       popularity: CONSTS.MIN_POPULARITY,
     },
@@ -67,6 +68,7 @@ function fillCandidates() {
       id: 2,
       name: "Capitão",
       votes: 0,
+      voteCount: 0,
       percentage: 0,
       popularity: CONSTS.MIN_POPULARITY,
     },
@@ -74,6 +76,7 @@ function fillCandidates() {
       id: 3,
       name: "Thor",
       votes: 0,
+      voteCount: 0,
       percentage: 0,
       popularity: CONSTS.MIN_POPULARITY,
     },
@@ -89,7 +92,10 @@ function simulateVoting() {
       const minVotes = CONSTS.MIN_VOTES;
       const maxVotes = CONSTS.MAX_VOTES * candidate.popularity;
 
-      candidate.votes += generateRandomNumber(minVotes, maxVotes);
+      const votes = generateRandomNumber(minVotes, maxVotes);
+
+      candidate.voteCount = candidate.votes;
+      candidate.votes += votes;
     });
   }, CONSTS.INTERVAL_VOTES);
 }
